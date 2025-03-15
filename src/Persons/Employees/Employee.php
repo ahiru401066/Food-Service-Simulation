@@ -10,4 +10,7 @@ class Employee extends \Persons\Person {
         $this->employeeId = $employeeId;
         $this->salary = $salary;
     }
+    public function getClassName():string{
+        return Employee::class;
+    }
 }
