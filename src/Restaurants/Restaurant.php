@@ -19,6 +19,14 @@ class Restaurant {
         return $this->employees;
     }
 
+    public function getAvailableCategories():array{
+        $categories = [];
+        foreach($this->menuItems as $menuItem){
+            $categories[] = $menuItem->getCategory();
+        }
+        return $categories;
+    }
+
     public function order(array $categories){
         //
     }
