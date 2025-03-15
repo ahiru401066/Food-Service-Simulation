@@ -39,6 +39,7 @@ class Restaurant {
     }
 
     public function order(array $orderCategories):Invoice{
+        echo "cashier received the order";
         $orderList = $this->getSameCategoryFoodItems($orderCategories);
         $foodOrder = $this->employees[1]->generateOrder($orderList);
         $this->employees[0]->prepareFood($foodOrder);

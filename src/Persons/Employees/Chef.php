@@ -9,7 +9,11 @@ class Chef extends Employee {
         parent::__construct($name, $age, $address, $employeeId, $salary);
     }
 
-    public function prepareFood(FoodOrder $foodOrder):string{
-        return "food order!";
+    public function prepareFood(FoodOrder $foodOrder):void{
+        echo "\n";
+        foreach($foodOrder->getFoodItems() as $foodItem){
+            echo "chef is cooking : " . $foodItem->getName(). "\n";
+        }
+        echo "\n";
     }
 }

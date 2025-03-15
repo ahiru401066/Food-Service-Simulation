@@ -13,11 +13,12 @@ class Invoice{
         $this->estimateMinutes = $estimateMinutes;
     }
     public function printInvoice(): void {
-        echo "===== Invoice =====\n";
+        echo "================= Invoice =================\n";
+        echo "\n";
         echo "Final Price      : ¥" . number_format($this->finalPrice, 2) . "\n";
         echo "Order Time       : " . $this->orderTime . "\n";
-        echo "Estimated Minutes: " . $this->estimateMinutes . " minutes\n";
-        echo "===================\n";
+        echo "\n";
+        echo "===========================================\n";
     }
     
 }

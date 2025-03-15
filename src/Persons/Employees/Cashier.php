@@ -20,7 +20,9 @@ class Cashier extends Employee {
 
     public function generateInvoice(FoodOrder $foodOrder):Invoice{
         // $foodOrderから日時やトータルプライスを取得する
-        $invoice = new Invoice(10.0, "2025", 10);
+        $totalPrice = $foodOrder->calculateFinalPrice();
+        $orderTime = $foodOrder->getOrderTime();
+        $invoice = new Invoice($totalPrice, $orderTime, 10);
         return $invoice;
     }
 }
