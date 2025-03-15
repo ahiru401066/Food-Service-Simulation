@@ -2,6 +2,8 @@
 
 namespace Restaurants;
 
+use Invoices\Invoice;
+
 class Restaurant {
     private array $menuItems = [];
     private array $employees = [];
@@ -27,7 +29,21 @@ class Restaurant {
         return $categories;
     }
 
-    public function order(array $categories){
-        //
+    private function getSameCategoryFoodItems(array $orderCategories){
+        $orderItems = [];
+        foreach($this->menuItems as $menuItem){
+            if(in_array($menuItem::getCategory(), $orderCategories))
+            $orderItems[] = $menuItem;
+        }
+        return $orderItems;
+    }
+
+    public function order(array $orderCategories):Invoice{
+        echo "cashier received the order";
+        $orderList = $this->getSameCategoryFoodItems($orderCategories);
+        $foodOrder = $this->employees[1]->generateOrder($orderList);
+        $this->employees[0]->prepareFood($foodOrder);
+        $invoice = $this->employees[1]->generateInvoice($foodOrder);
+        return $invoice;
     }
 }

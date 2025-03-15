@@ -2,6 +2,7 @@
 
 namespace Persons\Customers;
 
+use Invoices\Invoice;
 use Restaurants\Restaurant;
 
 class Customer extends \Persons\Person {
@@ -22,7 +23,17 @@ class Customer extends \Persons\Person {
         $restaurantAvailableCategories = $restaurant->getAvailableCategories();
         return array_intersect($customerInterestedCategories, $restaurantAvailableCategories);
     }
-    public function order(Restaurant $restaurant, string $categories){
-        //
+
+    public function output():void{
+        foreach ($this->interestedCategories as $category){
+            echo "customer wanted to eat：" . $category . "\n";
+        }
+    }
+
+    public function order(Restaurant $restaurant):Invoice{
+        $this->output();
+        $orderCategories = $this->interestedCategories($restaurant);
+        $invoice = $restaurant->order($orderCategories);
+        return $invoice;
     }
 }
