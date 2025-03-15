@@ -9,7 +9,7 @@ class Burger extends FoodItem {
         parent::__construct($name, $description, $prime);
     }
 
-    public static function getCategory(){
+    public static function getCategory():string{
         return self::CATEGORY;
     }
 }
